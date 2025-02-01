@@ -1,6 +1,4 @@
-Here’s a `README.md` template for your project:
 
-```markdown
 # URL Shortener Service
 
 A URL shortener service built with NestJS, using MongoDB for storage and caching with Redis. This project allows you to create short URLs and retrieve the original URL from a short code.
@@ -109,6 +107,3 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 ## License
 
 This project is licensed under the MIT License.
-```
-
-In this `README.md`, I’ve updated the information with `nanoid` instead of `shortid` as per your usage. Let me know if you want to add more details!
