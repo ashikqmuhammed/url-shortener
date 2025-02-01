@@ -9,7 +9,7 @@ import { Url, UrlSchema } from './shortener/url.schema';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot('mongodb+srv://ashikqmuhammed:9656213569@devcluster.k8jp1.mongodb.net/url-shortener-db?retryWrites=true&w=majority&appName=DevCluster'),
+    MongooseModule.forRoot(process.env.MONGODB_URL),
     MongooseModule.forFeature([{ name: Url.name, schema: UrlSchema }]),
     CacheModule.register(),
   ],
