@@ -1,73 +1,114 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+Here’s a `README.md` template for your project:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+```markdown
+# URL Shortener Service
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A URL shortener service built with NestJS, using MongoDB for storage and caching with Redis. This project allows you to create short URLs and retrieve the original URL from a short code.
 
-## Description
+## Features
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Shorten long URLs into a short code.
+- Retrieve original URLs by the short code.
+- Caching for fast retrieval of URLs.
+- MongoDB as the database for storing the original and short URLs.
+- Uses `nanoid` for generating unique short codes.
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- MongoDB instance running (locally or using a cloud provider like MongoDB Atlas)
+- Redis (for caching) or you can skip caching in the development environment.
 
 ## Installation
 
+1. Clone the repository.
+
+   ```bash
+   git clone <repository_url>
+   ```
+
+2. Install dependencies.
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root of the project with the following variables:
+
+   ```bash
+   MONGODB_URL=<your_mongodb_connection_string>
+   ```
+
+4. Start the application.
+
+   ```bash
+   npm run start
+   ```
+
+   The server will start on `http://localhost:3000`.
+
+## API Endpoints
+
+### 1. `POST /shorten`
+
+Shortens a given URL.
+
+- **Request body**:
+
+   ```json
+   {
+     "url": "<original_url>"
+   }
+   ```
+
+- **Response**:
+
+   ```json
+   {
+     "shortCode": "<generated_short_code>"
+   }
+   ```
+
+### 2. `GET /shorten/:code`
+
+Redirects to the original URL based on the short code.
+
+- **Request parameter**:
+
+   - `code` (string): The generated short code.
+
+- **Response**:
+
+   - Redirects to the original URL.
+
+## Technologies Used
+
+- **NestJS**: The main framework used to build the backend service.
+- **MongoDB**: Database for storing original URLs and their respective short codes.
+- **Redis (Optional)**: Caching layer for fast URL retrieval.
+- **nanoid**: A lightweight and secure library for generating unique IDs.
+- **Mongoose**: MongoDB ODM for interacting with the database.
+
+## Testing
+
+To run the tests:
+
 ```bash
-$ npm install
+npm run test
 ```
 
-## Running the app
+### Unit Tests
 
-```bash
-# development
-$ npm run start
+- **ShortenerController**: Tests for controller methods (shortening URL and redirecting).
+- **ShortenerService**: Tests for service logic, including URL creation and retrieval.
 
-# watch mode
-$ npm run start:dev
+## Contributions
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License.
+```
+
+In this `README.md`, I’ve updated the information with `nanoid` instead of `shortid` as per your usage. Let me know if you want to add more details!
